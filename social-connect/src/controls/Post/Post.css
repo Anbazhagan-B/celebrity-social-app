@@ -1,0 +1,38 @@
+.postContainer {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  padding: 9px;
+  border-width: medium;
+  gap: 15px;
+  border-style: solid;
+  background-color: black;
+  border-radius: 15px;
+  .post-title {
+    color: black;
+    align-self: center;
+  }
+  .post-img {
+    max-height: 250px;
+    border-radius: 15px;
+  }
+
+  .post-btns-div {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    height: 30px;
+
+    .post-btn {
+      width: 100%;
+      background-color: var(--primary-color);
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 30px;
+    }
+    .reject {
+      background-color: red;
+    }
+  }
+}

@@ -1,0 +1,33 @@
+.login-form {
+  max-width: 300px;
+  margin: auto;
+
+  h2 {
+    color: var(--primary-color);
+  }
+
+  .login-input {
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid var(--primary-color);
+    background-color: transparent;
+    color: var(--text-color);
+    width: calc(100% - 22px);
+  }
+
+  .login-button {
+    padding: 10px;
+    margin: 5px 0;
+    background-color: var(--primary-color);
+    border: none;
+    color: var(--background-color);
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s;
+
+    :hover {
+      background-color: var(--text-color);
+      color: var(--background-color);
+    }
+  }
+}

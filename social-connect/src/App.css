@@ -1,0 +1,23 @@
+:root {
+  --primary-color: goldenrod;
+  --background-color: black;
+  --text-color: white;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-weight: bolder;
+}
+
+.form-container {
+  padding: 50px;
+  text-align: center;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+}

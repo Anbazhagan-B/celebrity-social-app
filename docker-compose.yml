@@ -1,0 +1,92 @@
+version: "3.8"
+
+services:
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.5.0
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+
+  kafka:
+    image: confluentinc/cp-kafka:7.5.0
+    ports:
+      - "9092:9092"
+    depends_on:
+      - zookeeper
+    environment:
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+  redis:
+    image: redis:7
+    ports:
+      - "6379:6379"
+  mysql:
+    image: mysql:8
+    container_name: social_mysql
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: Password1
+      MYSQL_DATABASE: social_app_user
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  user-service:
+    build: ./user-service
+    ports:
+      - "8080:8080"
+    depends_on:
+      - kafka
+      - mysql
+    env_file:
+      - .env
+
+  post-service:
+    build: ./post-service
+    ports:
+      - "8081:8081"
+    depends_on:
+      - kafka
+      - mysql
+    env_file:
+      - .env
+
+  interaction-service:
+    build: ./interaction-service
+    ports:
+      - "8082:8082"
+    depends_on:
+      - kafka
+      - mysql
+    env_file:
+      - .env
+
+  chat-service:
+    build: ./chat-service
+    ports:
+      - "8083:8083"
+    depends_on:
+      - kafka
+      - mysql
+    env_file:
+      - .env
+
+  media-service:
+    build: ./media-service
+    ports:
+      - "8085:8085"
+    env_file:
+      - .env
+
+  ui:
+    build: ./social-connect
+    ports:
+      - "3000:3000"
+    depends_on:
+      - user-service
+      - post-service
+      - chat-service
+      - interaction-service
+volumes:
+  mysql_data:

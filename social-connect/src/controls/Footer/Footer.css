@@ -1,0 +1,24 @@
+.footer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: black;
+  color: white;
+  padding: 10px 0;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.footer a {
+  color: white;
+  text-decoration: none;
+}
+
+.footer svg {
+  transition: transform 0.3s ease;
+}
+
+.footer a:hover svg {
+  transform: scale(1.2);
+}

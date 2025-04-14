@@ -1,0 +1,89 @@
+.add-post-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: black;
+  padding: 20px;
+
+  .add-post-form {
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: medium solid goldenrod;
+
+    h2 {
+      text-align: center;
+      color: white;
+    }
+    .uploaded-img {
+      border-radius: 11px;
+      border: 3px solid white;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+      color: black;
+      text-align: center;
+      background: white;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: goldenrod;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 10px;
+
+      :hover {
+        background-color: white;
+        color: goldenrod;
+      }
+    }
+  }
+  .image-preview-wrapper {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto 15px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 3px solid white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .default-image-preview {
+    background-color: #fff8dc;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .default-user-icon {
+    font-size: 64px;
+    color: goldenrod;
+  }
+
+  .uploaded-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
