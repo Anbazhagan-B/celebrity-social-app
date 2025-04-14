@@ -1,0 +1,10 @@
+# Node / React
+social-connect/node_modules/
+social-connect/.env.production
+social-connect/.env.development
+
+# Docker
+post-service/.env
+
+# Docker
+.env
