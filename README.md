@@ -1,6 +1,6 @@
 # 🌐 Social Connect
 
-A full-stack social media-style application built using **React**, **Redux**, and **Spring Boot**, featuring:
+A full-stack social media-style application built using **React**, **Redux**, **Java** and **Spring Boot**, featuring:
 
 - ✅ User registration and login
 - 📸 Post sharing with image preview
