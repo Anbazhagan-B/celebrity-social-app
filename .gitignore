@@ -8,5 +8,8 @@ post-service/.env
 
 api-gateway/src/main/resources/application-dev.yml
 
+common-pojos/.idea
+
 # Docker
 .env
+.vs
