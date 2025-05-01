@@ -4,6 +4,7 @@ import com.sotroid.chat_service.dto.RequestDTOs.ChatMessage;
 import com.sotroid.chat_service.entity.Message;
 import com.sotroid.chat_service.service.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
@@ -15,6 +16,9 @@ public class ChatWebSocketController {
     @Autowired
     private final SimpMessagingTemplate messagingTemplate;
 
+    @Autowired
+    private KafkaTemplate<String, Object> kafkaTemplate;
+
     public ChatWebSocketController(MessageService chatService, SimpMessagingTemplate messagingTemplate) {
         this.messageService = chatService;
         this.messagingTemplate = messagingTemplate;
@@ -25,9 +29,6 @@ public class ChatWebSocketController {
     public void handleChat(ChatMessage chatMessage) {
         Message saved = messageService.processIncomingMessage(chatMessage);
 
-        messagingTemplate.convertAndSend(
-                "/topic/messages/" + chatMessage.getToUserId(),
-                saved
-        );
+        kafkaTemplate.send("chat-messages", chatMessage);
     }
 }
