@@ -1,0 +1,69 @@
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins:
+              - "http://localhost:3000"
+            allowedMethods: "*"
+            allowedHeaders: "*"
+            allowCredentials: true
+            exposedHeaders: [Authorization]
+            maxAge: 3600
+
+      default-filters:
+        - AddRequestHeader=X-Gateway-Request, Gateway-Active
+        - AddResponseHeader=X-Gateway-Response, Gateway-Handled
+
+      routes:
+        # User Service (Handles both user data AND auth)
+        - id: user-service
+          uri: http://user-service:8080
+          predicates:
+            - Path=/api/users/**, /api/login/**  # Combined paths
+
+        # Post Service
+        - id: post-service
+          uri: http://post-service:8081
+          predicates:
+            - Path=/api/posts/**
+
+        # Interaction Service
+        - id: interaction-service
+          uri: http://interaction-service:8082
+          predicates:
+            - Path=/api/relationships/**
+
+        # Chat Service
+        - id: chat-service
+          uri: http://chat-service:8083
+          predicates:
+            - Path=/api/chats/**
+
+        # Media Service
+        - id: media-service
+          uri: http://media-service:8085
+          predicates:
+            - Path=/api/media/**
+
+# Server Configuration
+server:
+  port: 8088
+  error:
+    include-message: always  # Useful for debugging auth failures
+
+# Logging Configuration
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG
+    reactor.netty.http.client: DEBUG
+
+# Fallback Endpoint Configuration
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,gateway

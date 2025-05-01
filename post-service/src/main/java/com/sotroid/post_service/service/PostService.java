@@ -68,7 +68,7 @@ public class PostService {
         List<Post> posts = postRepository.findByUserIdNot(currentUserId);
 
         return posts.stream().map(post -> {
-            UserProfileResponse user = restTemplate.getForObject(userServiceUrl + "/api/users/" + post.getId(), UserProfileResponse.class);
+            UserProfileResponse user = restTemplate.getForObject(userServiceUrl + "/api/users/" + post.getUserId(), UserProfileResponse.class);
             return getPostResponse(post, user);
         }).collect(Collectors.toList());
     }

@@ -14,7 +14,7 @@ export function* fetchPostsSaga(action) {
   try {
     const { data } = yield call(
       axios.get,
-      `http://localhost:8081/api/posts/explore/${action.payload}`
+      `${API_CONFIG.BASE_URL}/api/posts/explore/${action.payload}`
     );
     yield put({ type: FETCH_POSTS_SUCCESS, payload: data });
   } catch (error) {
@@ -30,7 +30,7 @@ export function* addPostSaga(action) {
     formData.append("userId", action.payload.userId);
 
     const response = yield call(() =>
-      axios.post(`${API_CONFIG.POST_SERVICE}/api/posts`, formData, {
+      axios.post(`${API_CONFIG.BASE_URL}/api/posts`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

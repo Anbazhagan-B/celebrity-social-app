@@ -10,7 +10,7 @@ const Footer = () => {
         <FaHome size={24} color="goldenrod" />
       </Link>
       <Link to="/add-post">
-        <FaPlusCircle size={38} color="goldenrod" />
+        <FaPlusCircle size={45} color="goldenrod" />
       </Link>
       <Link to="/connections">
         <FaUsers size={24} color="goldenrod" />

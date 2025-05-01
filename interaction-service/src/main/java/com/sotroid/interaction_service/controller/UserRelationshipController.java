@@ -11,7 +11,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/relationships")
-@CrossOrigin(origins = "http://localhost:3000")
 public class UserRelationshipController {
 
     private final UserRelationshipService userRelationshipService;
