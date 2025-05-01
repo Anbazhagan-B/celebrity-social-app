@@ -15,7 +15,7 @@ function* connectUserSaga(action) {
     const { fromUserId, toUserId } = action.payload;
     const response = yield call(
       axios.post,
-      `${API_CONFIG.INTERACTION_SERVICE}/api/relationships/connect`,
+      `${API_CONFIG.BASE_URL}/api/relationships/connect`,
       { fromUserId, toUserId }
     );
     yield put({ type: CONNECT_USER_SUCCESS, payload: response.data });
@@ -39,7 +39,7 @@ function* avoidUserSaga(action) {
     const { fromUserId, toUserId } = action.payload;
     const response = yield call(
       axios.post,
-      "http://localhost:8082/api/relationships/avoid",
+      `${API_CONFIG.BASE_URL}/api/relationships/avoid`,
       { fromUserId, toUserId }
     );
     yield put({ type: AVOID_USER_SUCCESS, payload: response.data });

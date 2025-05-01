@@ -1,0 +1,12 @@
+# Node / React
+social-connect/node_modules/
+social-connect/.env.production
+social-connect/.env.development
+
+# Docker
+post-service/.env
+
+api-gateway/src/main/resources/application-dev.yml
+
+# Docker
+.env

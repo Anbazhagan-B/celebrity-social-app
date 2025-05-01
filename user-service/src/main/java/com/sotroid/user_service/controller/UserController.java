@@ -1,6 +1,7 @@
 package com.sotroid.user_service.controller;
 
 
+import com.sotroid.user_service.dto.request.LoginRequest;
 import com.sotroid.user_service.dto.response.UserProfileResponse;
 import com.sotroid.user_service.dto.request.UserRegisterRequest;
 import com.sotroid.user_service.service.MediaClientService;
@@ -13,7 +14,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/users")
-@CrossOrigin(origins = "http://localhost:3000")
 public class UserController {
 
     final UserService userService;
@@ -47,4 +47,14 @@ public class UserController {
         return userService.getUserProfile(userId);
     }
 
+    @GetMapping()
+    public UserProfileResponse getusers() {
+        return userService.getUserProfile(1L);
+    }
+
+//    @PostMapping("/validateByEmail")
+//    public ResponseEntity<UserProfileResponse> login(@RequestBody LoginRequest loginRequest)
+//    {
+//        return ResponseEntity.ok(userService.validateLogin(loginRequest));
+//    }
 }

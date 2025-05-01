@@ -15,7 +15,7 @@ function* fetchConnectionsSaga(action) {
   try {
     const response = yield call(
       axios.get,
-      `${API_CONFIG.INTERACTION_SERVICE}/api/relationships/connections/${userId}`
+      `${API_CONFIG.BASE_URL}/api/relationships/connections/${userId}`
     );
     yield put({ type: FETCH_CONNECTIONS_SUCCESS, payload: response.data });
   } catch (error) {
@@ -32,7 +32,7 @@ function* searchUsernamesSaga(action) {
   try {
     const res = yield call(() =>
       axios.get(
-        `${API_CONFIG.INTERACTION_SERVICE}/api/relationships/search?prefix=${action.payload}`
+        `${API_CONFIG.BASE_URL}/api/relationships/search?prefix=${action.payload}`
       )
     );
     yield put({ type: SEARCH_USERNAMES_SUCCESS, payload: res.data });

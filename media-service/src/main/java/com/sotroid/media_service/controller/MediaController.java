@@ -8,7 +8,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequestMapping("/api/media")
-@CrossOrigin(origins = "http://localhost:3000")
 public class MediaController {
     private final S3Service s3Service;
 

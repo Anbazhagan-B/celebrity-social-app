@@ -79,6 +79,19 @@ services:
     env_file:
       - .env
 
+  api-gateway:
+    build: ./api-gateway
+    ports:
+      - "8088:8088"
+    depends_on:
+      - user-service
+      - post-service
+      - chat-service
+      - media-service
+      - interaction-service
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+
   ui:
     build: ./social-connect
     ports:
